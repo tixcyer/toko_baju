@@ -1,0 +1,2599 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VogueStore — Toko Baju Modern & Stylish</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+            },
+            colors: {
+              brand: {
+                50: "#fdf4f5",
+                100: "#fbe8ea",
+                500: "#e11d48",
+                600: "#be123c",
+                700: "#9f1239",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white flex flex-col min-h-screen"
+  >
+    <!-- ================= MODAL NOTIFIKASI SELAMAT DATANG (TENGAH) ================= -->
+    <div
+      id="welcomeNotificationModal"
+      class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-300"
+    >
+      <div
+        class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 text-center space-y-5 shadow-2xl border border-slate-100 relative transform transition-all scale-100"
+      >
+        <!-- Ikon Bintang / Sambutan -->
+        <div
+          class="w-16 h-16 bg-brand-50 text-brand-600 rounded-2xl flex items-center justify-center mx-auto text-2xl shadow-inner"
+        >
+          <i class="fa-solid fa-store"></i>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-2xl font-extrabold text-slate-900">
+            Selamat Datang di VogueStore!
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed">
+            Website ini dibuat sebagai contoh proyek oleh
+            <strong class="text-slate-800">Ray Asaa</strong>. Nikmati pengalaman
+            belanja pakaian modern dan stylish dengan mudah di sini.
+          </p>
+        </div>
+
+        <div class="pt-2">
+          <button
+            onclick="
+              document.getElementById(
+                'welcomeNotificationModal',
+              ).style.display = 'none'
+            "
+            class="w-full py-3.5 rounded-xl bg-brand-500 text-white font-bold hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/25"
+          >
+            Mulai Belanja Sekarang
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= NAVBAR PROFESIONAL ================= -->
+    <header
+      class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300"
+    >
+      <!-- Top Announcement Bar -->
+      <div
+        class="bg-slate-900 text-slate-200 text-xs py-2 px-4 text-center font-medium tracking-wide"
+      >
+        🔥 Diskon Spesial Musim Ini: Gratis Ongkir untuk Minimal Belanja Rp
+        150.000! &bull; Gunakan Kode:
+        <span class="text-brand-400 font-bold">VOGUECOP</span>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20 gap-4">
+          <!-- Brand Logo -->
+          <div class="flex items-center gap-8">
+            <a href="#" class="flex items-center gap-2 group">
+              <div
+                class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-extrabold text-xl tracking-tighter group-hover:bg-brand-600 transition-colors shadow-md shadow-slate-900/10"
+              >
+                V
+              </div>
+              <div class="flex flex-col">
+                <span
+                  class="text-xl font-extrabold tracking-tight text-slate-900 leading-none"
+                  >VOGUE<span class="text-brand-600">STORE</span></span
+                >
+                <span
+                  class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mt-1"
+                  >Modish Apparel</span
+                >
+              </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-1">
+              <a
+                href="#katalog"
+                class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-brand-600 hover:bg-slate-100 transition-all"
+                >Katalog</a
+              >
+              <a
+                href="#kategori"
+                class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-brand-600 hover:bg-slate-100 transition-all"
+                >Kategori</a
+              >
+              <a
+                href="#lokasi-konsultasi"
+                class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-brand-600 hover:bg-slate-100 transition-all"
+                >Lokasi & Konsultasi</a
+              >
+              <a
+                href="#tentang"
+                class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-brand-600 hover:bg-slate-100 transition-all"
+                >Tentang Kami</a
+              >
+            </nav>
+          </div>
+
+          <!-- Search Bar & Actions -->
+          <div class="flex items-center gap-3">
+            <!-- Search Input Desktop -->
+            <div class="hidden lg:flex items-center relative w-64 xl:w-80">
+              <span class="absolute left-3.5 text-slate-400 text-sm"
+                ><i class="fa-solid fa-magnifying-glass"></i
+              ></span>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari baju, kaos, jaket..."
+                class="w-full bg-slate-100/80 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm font-medium focus:outline-none focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
+              />
+            </div>
+
+            <!-- Wishlist Icon -->
+            <button
+              class="hidden sm:flex w-11 h-11 items-center justify-center rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition-all relative"
+            >
+              <i class="fa-regular fa-heart text-lg"></i>
+              <span
+                class="absolute top-2 right-2 w-2 h-2 rounded-full bg-brand-600"
+              ></span>
+            </button>
+
+            <!-- Cart Trigger Button -->
+            <button
+              id="cartBtn"
+              class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-slate-900 text-white hover:bg-brand-600 transition-all shadow-md shadow-slate-900/10 group"
+            >
+              <div class="relative">
+                <i
+                  class="fa-solid fa-bag-shopping text-lg group-hover:scale-110 transition-transform"
+                ></i>
+                <span
+                  id="cartBadge"
+                  class="absolute -top-2 -right-3 bg-brand-500 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm"
+                  >0</span
+                >
+              </div>
+              <span class="hidden sm:inline font-semibold text-sm pl-1"
+                >Keranjang</span
+              >
+            </button>
+
+            <!-- Mobile Menu Toggle -->
+            <button
+              id="mobileMenuBtn"
+              class="md:hidden w-11 h-11 flex items-center justify-center rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 transition-all"
+            >
+              <i class="fa-solid fa-bars text-lg"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Nav Drawer -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-5 space-y-3 shadow-xl"
+      >
+        <div class="relative w-full">
+          <span class="absolute left-3.5 top-3 text-slate-400 text-sm"
+            ><i class="fa-solid fa-magnifying-glass"></i
+          ></span>
+          <input
+            type="text"
+            id="mobileSearchInput"
+            placeholder="Cari produk baju..."
+            class="w-full bg-slate-100 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm font-medium focus:outline-none focus:border-brand-500"
+          />
+        </div>
+        <nav class="flex flex-col space-y-1">
+          <a
+            href="#katalog"
+            class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >Katalog Produk</a
+          >
+          <a
+            href="#kategori"
+            class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >Kategori Pilihan</a
+          >
+          <a
+            href="#lokasi-konsultasi"
+            class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >Lokasi & Konsultasi</a
+          >
+          <a
+            href="#tentang"
+            class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >Tentang Kami</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section
+      class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 lg:py-28 overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 opacity-10 bg-[radial-gradient(#e11d48_1px,transparent_1px)] [background-size:16px_16px]"
+      ></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl space-y-6">
+          <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/20 border border-brand-500/30 text-brand-300 text-xs font-semibold tracking-wide uppercase"
+          >
+            <i class="fa-solid fa-bolt text-brand-400"></i> Koleksi Musim
+            Terbaru 2026
+          </div>
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white"
+          >
+            Tampil Percaya Diri dengan Gaya Terbaikmu
+          </h1>
+          <p
+            class="text-slate-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl"
+          >
+            Temukan rangkaian pakaian kasual, formal, hingga streetwear
+            berkualitas tinggi dengan bahan premium yang nyaman dikenakan
+            sepanjang hari.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a
+              href="#katalog"
+              class="px-8 py-4 rounded-xl bg-brand-500 text-white font-bold hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/25 flex items-center gap-2"
+            >
+              <span>Belanja Sekarang</span>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+            <a
+              href="#kategori"
+              class="px-8 py-4 rounded-xl bg-white/10 text-white font-bold hover:bg-white/20 transition-all border border-white/10 backdrop-blur-sm"
+            >
+              Jelajahi Kategori
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= UTAMA / KATALOG PRODUK ================= -->
+    <main
+      class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full"
+      id="katalog"
+    >
+      <!-- Filter & Section Title -->
+      <div
+        class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 border-b border-slate-200 pb-6"
+        id="kategori"
+      >
+        <div>
+          <span
+            class="text-brand-600 font-bold text-xs uppercase tracking-widest"
+            >Katalog Pilihan</span
+          >
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+            Jelajahi Koleksi Pakaian
+          </h2>
+        </div>
+
+        <!-- Category Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-2" id="filterContainer">
+          <button
+            data-category="all"
+            class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-slate-900 text-white transition-all shadow-sm"
+          >
+            Semua
+          </button>
+          <button
+            data-category="Kaos"
+            class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition-all"
+          >
+            Kaos (10)
+          </button>
+          <button
+            data-category="Kemeja"
+            class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition-all"
+          >
+            Kemeja (10)
+          </button>
+          <button
+            data-category="Jaket"
+            class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition-all"
+          >
+            Jaket & Outer (10)
+          </button>
+          <button
+            data-category="Celana"
+            class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition-all"
+          >
+            Celana (10)
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Grid Container -->
+      <div
+        id="productGrid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+      >
+        <!-- Render via JavaScript -->
+      </div>
+
+      <!-- Empty State Search -->
+      <div id="emptyState" class="hidden text-center py-16">
+        <div
+          class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto text-2xl mb-4"
+        >
+          <i class="fa-solid fa-box-open"></i>
+        </div>
+        <h3 class="text-lg font-bold text-slate-800">Produk tidak ditemukan</h3>
+        <p class="text-slate-500 text-sm mt-1">
+          Coba gunakan kata kunci pencarian lain atau pilih kategori berbeda.
+        </p>
+      </div>
+    </main>
+
+    <!-- ================= MODAL DETAIL PRODUK & UKURAN/WARNA/ULASAN ================= -->
+    <div
+      id="productModal"
+      class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl max-h-[90vh] flex flex-col animate-in fade-in zoom-in-95 duration-200"
+      >
+        <div class="flex justify-end p-4 pb-0">
+          <button
+            id="closeModalBtn"
+            class="w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-800 flex items-center justify-center transition-all"
+          >
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+
+        <div class="p-6 pt-0 overflow-y-auto space-y-6 flex-1">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div
+              class="rounded-xl overflow-hidden bg-slate-100 aspect-square flex items-center justify-center relative"
+            >
+              <img
+                id="modalImg"
+                src=""
+                alt="Produk"
+                class="w-full h-full object-cover"
+              />
+              <span
+                id="modalCategoryBadge"
+                class="absolute top-3 left-3 bg-slate-900/80 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg backdrop-blur-sm"
+              ></span>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <h3
+                  id="modalTitle"
+                  class="text-2xl font-extrabold text-slate-900"
+                ></h3>
+                <p
+                  id="modalPrice"
+                  class="text-xl font-bold text-brand-600 mt-1"
+                ></p>
+              </div>
+              <p
+                id="modalDesc"
+                class="text-sm text-slate-600 leading-relaxed"
+              ></p>
+
+              <!-- Ukuran Varian -->
+              <div>
+                <label
+                  class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2"
+                  >Pilih Ukuran:</label
+                >
+                <div id="sizeOptions" class="flex flex-wrap gap-2">
+                  <!-- Injected by JS -->
+                </div>
+              </div>
+
+              <!-- Warna Varian -->
+              <div>
+                <label
+                  class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2"
+                  >Pilih Warna:</label
+                >
+                <div id="colorOptions" class="flex items-center gap-3">
+                  <!-- Injected by JS -->
+                </div>
+                <p
+                  id="selectionError"
+                  class="text-xs text-brand-600 font-semibold mt-2 hidden"
+                >
+                  * Harap pilih ukuran dan warna terlebih dahulu.
+                </p>
+              </div>
+
+              <div class="pt-2">
+                <button
+                  id="modalAddToCartBtn"
+                  class="w-full py-3.5 px-4 rounded-xl bg-slate-900 text-white font-bold hover:bg-brand-600 transition-all shadow-lg shadow-slate-900/10 flex items-center justify-center gap-2"
+                >
+                  <i class="fa-solid fa-bag-shopping"></i> Masukkan ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section Ulasan Pengguna (Reviews Relevan & Sinkron) -->
+          <div class="border-t border-slate-200 pt-6">
+            <h4
+              class="text-sm font-extrabold uppercase tracking-wider text-slate-900 mb-4"
+            >
+              Ulasan Pembeli (<span id="modalReviewsCount">0</span>)
+            </h4>
+            <div id="modalReviewsList" class="space-y-3">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= KERANJANG BELANJA DRAWER ================= -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+      <div
+        id="cartOverlay"
+        class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+      ></div>
+      <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+        <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+          <!-- Cart Header -->
+          <div
+            class="p-6 border-b border-slate-200 flex items-center justify-between bg-slate-50"
+          >
+            <div class="flex items-center gap-2.5">
+              <div
+                class="w-9 h-9 rounded-xl bg-brand-500/10 text-brand-600 flex items-center justify-center font-bold"
+              >
+                <i class="fa-solid fa-bag-shopping"></i>
+              </div>
+              <div>
+                <h2 class="text-lg font-extrabold text-slate-900">
+                  Keranjang Belanja
+                </h2>
+                <p id="cartItemCountHeader" class="text-xs text-slate-500">
+                  0 barang
+                </p>
+              </div>
+            </div>
+            <button
+              id="closeCartBtn"
+              class="w-9 h-9 rounded-full bg-slate-200/60 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition-all"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <!-- Cart Items List -->
+          <div
+            id="cartItemsList"
+            class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-slate-100"
+          >
+            <!-- Dynamic Cart Items -->
+          </div>
+
+          <!-- Cart Footer & Checkout -->
+          <div class="p-6 border-t border-slate-200 bg-slate-50 space-y-4">
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm text-slate-500">
+                <span>Subtotal</span>
+                <span id="cartSubtotal" class="font-semibold text-slate-800"
+                  >Rp 0</span
+                >
+              </div>
+              <div class="flex justify-between text-sm text-slate-500">
+                <span>Estimasi Ongkir</span>
+                <span class="font-semibold text-emerald-600">Gratis</span>
+              </div>
+              <div
+                class="flex justify-between text-base font-extrabold text-slate-900 pt-2 border-t border-slate-200"
+              >
+                <span>Total Keseluruhan</span>
+                <span id="cartTotal" class="text-brand-600">Rp 0</span>
+              </div>
+            </div>
+            <button
+              id="checkoutBtn"
+              class="w-full py-4 rounded-xl bg-brand-500 text-white font-bold hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/25 flex items-center justify-center gap-2"
+            >
+              <span>Lanjut ke Checkout</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= MODAL CHECKOUT ================= -->
+    <div
+      id="checkoutModal"
+      class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-xl w-full overflow-hidden shadow-2xl max-h-[90vh] flex flex-col"
+      >
+        <div
+          class="p-6 border-b border-slate-200 flex items-center justify-between bg-slate-50"
+        >
+          <h3 class="text-xl font-extrabold text-slate-900">
+            Formulir Checkout Pesanan (Hanya Contoh)
+          </h3>
+          <button
+            id="closeCheckoutModal"
+            class="w-9 h-9 rounded-full bg-slate-200/60 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition-all"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <form id="checkoutForm" class="p-6 overflow-y-auto space-y-4 flex-1">
+          <div>
+            <label
+              class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1"
+              >Nama Lengkap Penerima</label
+            >
+            <input
+              type="text"
+              id="checkoutName"
+              required
+              placeholder="Contoh: Ray Asaa"
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 focus:bg-white transition-all"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1"
+              >Nomor Telepon / WhatsApp</label
+            >
+            <input
+              type="tel"
+              id="checkoutPhone"
+              required
+              placeholder="Contoh: 081234567890"
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 focus:bg-white transition-all"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1"
+              >Alamat Lengkap Pengiriman</label
+            >
+            <textarea
+              id="checkoutAddress"
+              required
+              rows="3"
+              placeholder="Nama Jalan, No. Rumah, Kecamatan, Kota, Provinsi..."
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 focus:bg-white transition-all"
+            ></textarea>
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1"
+              >Metode Pembayaran</label
+            >
+            <select
+              id="checkoutPayment"
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 focus:bg-white transition-all"
+            >
+              <option value="Transfer Bank (BCA / Mandiri / BNI)">
+                Transfer Bank (BCA / Mandiri / BNI)
+              </option>
+              <option value="E-Wallet (GoPay / OVO / DANA / QRIS)">
+                E-Wallet (GoPay / OVO / DANA / QRIS)
+              </option>
+              <option value="Bayar di Tempat (COD)">
+                Bayar di Tempat (COD)
+              </option>
+            </select>
+          </div>
+
+          <div
+            id="checkoutError"
+            class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 text-xs font-semibold"
+          >
+            * Mohon lengkapi seluruh kolom formulir pengiriman sebelum
+            melanjutkan.
+          </div>
+
+          <div class="pt-4">
+            <button
+              type="submit"
+              class="w-full py-4 rounded-xl bg-brand-500 text-white font-bold hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/25"
+            >
+              Konfirmasi Pesanan Sekarang
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ================= MODAL SUCCESS STRUK / ORDER SUMMARY ================= -->
+    <div
+      id="successModal"
+      class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-md w-full p-8 text-center space-y-6 shadow-2xl animate-in fade-in zoom-in-95 duration-200"
+      >
+        <div
+          class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner"
+        >
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+          <h3 class="text-2xl font-extrabold text-slate-900">
+            Pesanan Berhasil Dibuat!
+          </h3>
+          <p class="text-slate-500 text-sm mt-1">
+            Terima kasih telah berbelanja di VogueStore. Pesanan Anda sedang
+            diproses.
+          </p>
+        </div>
+        <div
+          class="bg-slate-50 rounded-2xl p-4 border border-slate-200 text-left space-y-2"
+        >
+          <div
+            class="flex justify-between text-xs font-semibold text-slate-500"
+          >
+            <span>Nomor Pesanan (Order ID):</span>
+            <span id="successOrderId" class="text-slate-800 font-bold"
+              >#VOG-84920</span
+            >
+          </div>
+          <div
+            class="flex justify-between text-xs font-semibold text-slate-500"
+          >
+            <span>Nama Penerima:</span>
+            <span id="successName" class="text-slate-800 font-bold">-</span>
+          </div>
+          <div
+            class="flex justify-between text-xs font-semibold text-slate-500"
+          >
+            <span>Total Pembayaran:</span>
+            <span id="successTotal" class="text-brand-600 font-bold">Rp 0</span>
+          </div>
+        </div>
+        <button
+          id="closeSuccessBtn"
+          class="w-full py-3.5 rounded-xl bg-slate-900 text-white font-bold hover:bg-brand-600 transition-all shadow-md"
+        >
+          Kembali ke Beranda
+        </button>
+      </div>
+    </div>
+
+    <!-- ================= SECTION LOKASI TOKO DI BANDUNG & FORM KONSULTASI ================= -->
+    <section
+      class="py-16 bg-white border-t border-slate-200"
+      id="lokasi-konsultasi"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span
+            class="text-brand-600 font-bold text-xs uppercase tracking-widest"
+            >Kunjungi & Hubungi Kami</span
+          >
+          <h2 class="text-3xl font-extrabold text-slate-900 mt-1">
+            Lokasi Toko (Bandung) & Konsultasi Produk
+          </h2>
+          <p class="text-slate-500 text-sm mt-2">
+            Datang langsung ke flagship store kami di Kota Bandung atau tanyakan
+            konsultasi ukuran serta gaya busana Anda.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <!-- Section Kiri: Google Maps Lokasi Toko di Bandung -->
+          <div
+            class="bg-slate-50 rounded-3xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm"
+          >
+            <div class="mb-4">
+              <div
+                class="flex items-center gap-2 text-slate-900 font-bold text-lg mb-1"
+              >
+                <i class="fa-solid fa-map-location-dot text-brand-600"></i>
+                Flagship Store VogueStore Bandung
+              </div>
+              <p class="text-xs text-slate-500">
+                Jl. Braga No. 88, Kota Bandung, Jawa Barat, Indonesia
+              </p>
+            </div>
+            <!-- Google Maps Embed Bandung -->
+            <div
+              class="w-full h-80 rounded-2xl overflow-hidden border border-slate-200 relative shadow-inner"
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.798447101!2d107.609!3d-6.917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTUnMDEuMiJTIDEwN8KwMzYnMzIuNCJF!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid"
+                width="100%"
+                height="100%"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              >
+              </iframe>
+            </div>
+            <div
+              class="mt-4 flex items-center justify-between text-xs text-slate-500 font-medium"
+            >
+              <span
+                ><i class="fa-regular fa-clock text-brand-600 mr-1"></i> Buka
+                Setiap Hari: 09.00 - 21.00 WIB</span
+              >
+              <a
+                href="https://maps.google.com/?q=Jl.+Braga+Bandung"
+                target="_blank"
+                class="text-brand-600 font-bold hover:underline"
+                >Buka di Google Maps
+                <i
+                  class="fa-solid fa-arrow-up-right-from-square text-[10px]"
+                ></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Section Kanan: Form Konsultasi Produk -->
+          <div
+            class="bg-slate-900 text-white rounded-3xl p-8 flex flex-col justify-between shadow-xl relative overflow-hidden"
+          >
+            <div
+              class="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-500/10 rounded-full blur-2xl"
+            ></div>
+            <div>
+              <div
+                class="flex items-center gap-2 text-brand-400 font-bold text-lg mb-1"
+              >
+                <i class="fa-solid fa-comments"></i> Konsultasi Ukuran & Gaya
+              </div>
+              <h3 class="text-xl font-extrabold text-white">
+                Butuh Bantuan Memilih Baju?
+              </h3>
+              <p class="text-xs text-slate-400 mt-1">
+                Kirimkan pertanyaan seputar ukuran, tinggi/berat badan, atau
+                rekomendasi outfit, stylist kami akan membalas via WhatsApp.
+              </p>
+            </div>
+
+            <form
+              id="consultationForm"
+              onsubmit="
+                event.preventDefault();
+                alert(
+                  'Terima kasih! Pesan konsultasi Anda telah dikirim. Stylist kami akan segera menghubungi Anda.',
+                );
+                this.reset();
+              "
+              class="space-y-4 my-6"
+            >
+              <div>
+                <label
+                  class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1"
+                  >Nama Lengkap</label
+                >
+                <input
+                  type="text"
+                  required
+                  placeholder="Nama Anda..."
+                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500"
+                />
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1"
+                    >Nomor WhatsApp</label
+                  >
+                  <input
+                    type="tel"
+                    required
+                    placeholder="08123456789"
+                    class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1"
+                    >Topik Konsultasi</label
+                  >
+                  <select
+                    class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500"
+                  >
+                    <option>Rekomendasi Ukuran (Size Guide)</option>
+                    <option>Padu Padan Outfit (Mix & Match)</option>
+                    <option>Ketersediaan Stok Khusus</option>
+                    <option>Pertanyaan Lainnya</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label
+                  class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1"
+                  >Pesan / Detail Tinggi & Berat Badan</label
+                >
+                <textarea
+                  rows="3"
+                  required
+                  placeholder="Contoh: Tinggi 175cm, berat 65kg, cocok pakai ukuran apa untuk kaos oversized?"
+                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full py-3.5 rounded-xl bg-brand-500 text-white font-bold hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/25 flex items-center justify-center gap-2"
+              >
+                <span>Kirim Konsultasi</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER PROFESIONAL ================= -->
+    <footer
+      id="tentang"
+      class="bg-slate-900 text-slate-400 border-t border-slate-800"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+          <!-- Col 1: Brand Info -->
+          <div class="lg:col-span-2 space-y-4">
+            <div class="flex items-center gap-2">
+              <div
+                class="w-9 h-9 rounded-xl bg-brand-500 text-white flex items-center justify-center font-extrabold text-lg tracking-tighter"
+              >
+                V
+              </div>
+              <span class="text-xl font-extrabold tracking-tight text-white"
+                >VOGUE<span class="text-brand-500">STORE</span></span
+              >
+            </div>
+            <p class="text-sm text-slate-400 leading-relaxed pr-6">
+              Destinasi belanja pakaian online terpercaya yang menghadirkan tren
+              fashion terkini dengan kualitas material premium dan harga
+              terjangkau untuk menunjang gaya hidup harian Anda.
+            </p>
+            <div class="flex items-center gap-3 pt-2">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-brand-500 hover:text-white flex items-center justify-center transition-all text-slate-300"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-brand-500 hover:text-white flex items-center justify-center transition-all text-slate-300"
+                ><i class="fa-brands fa-tiktok"></i
+              ></a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-brand-500 hover:text-white flex items-center justify-center transition-all text-slate-300"
+                ><i class="fa-brands fa-whatsapp"></i
+              ></a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-brand-500 hover:text-white flex items-center justify-center transition-all text-slate-300"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Col 2: Kategori Cepat -->
+          <div class="space-y-4">
+            <h3 class="text-white font-bold text-sm uppercase tracking-wider">
+              Kategori Pakaian
+            </h3>
+            <ul class="space-y-2.5 text-sm">
+              <li>
+                <a href="#katalog" class="hover:text-white transition-colors"
+                  >Kaos Polos & Grafis</a
+                >
+              </li>
+              <li>
+                <a href="#katalog" class="hover:text-white transition-colors"
+                  >Kemeja Flanel & Formal</a
+                >
+              </li>
+              <li>
+                <a href="#katalog" class="hover:text-white transition-colors"
+                  >Jaket Bomber & Hoodie</a
+                >
+              </li>
+              <li>
+                <a href="#katalog" class="hover:text-white transition-colors"
+                  >Celana Chino & Denim</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Layanan & Bantuan -->
+          <div class="space-y-4">
+            <h3 class="text-white font-bold text-sm uppercase tracking-wider">
+              Layanan Pelanggan
+            </h3>
+            <ul class="space-y-2.5 text-sm">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Status Pesanan Saya</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Kebijakan Pengembalian</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Panduan Ukuran (Size Guide)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#lokasi-konsultasi"
+                  class="hover:text-white transition-colors"
+                  >Konsultasi Stylist</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Newsletter -->
+          <div class="space-y-4">
+            <h3 class="text-white font-bold text-sm uppercase tracking-wider">
+              Buletin Diskon
+            </h3>
+            <p class="text-xs text-slate-400">
+              Dapatkan info promo eksklusif dan voucher potongan harga langsung
+              di email Anda.
+            </p>
+            <form
+              onsubmit="
+                event.preventDefault();
+                alert('Terima kasih telah mendaftar buletin VogueStore!');
+              "
+              class="space-y-2"
+            >
+              <input
+                type="email"
+                placeholder="Alamat email Anda..."
+                required
+                class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500"
+              />
+              <button
+                type="submit"
+                class="w-full py-2.5 rounded-xl bg-brand-500 text-white text-sm font-bold hover:bg-brand-600 transition-all shadow-md"
+              >
+                Berlangganan
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Bottom Copyright & Payment Methods -->
+        <div
+          class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          <p class="text-xs text-slate-500">
+            &copy; 2026 VogueStore Indonesia. Seluruh hak cipta dilindungi
+            undang-undang.
+          </p>
+          <div class="flex items-center gap-3 text-slate-400 text-2xl">
+            <i class="fa-brands fa-cc-visa" title="Visa"></i>
+            <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+            <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+            <i class="fa-solid fa-wallet" title="QRIS / E-Wallet"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+      // Data 40 Produk Baju Lengkap dengan variasi ulasan nyata dan sinkron
+      const products = [
+        // --- KATEGORI: KAOS (10 Produk) ---
+        {
+          id: 1,
+          name: "Oversized Cotton T-Shirt Black",
+          category: "Kaos",
+          price: 135000,
+          stock: 12,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#1e293b", "#e2e8f0", "#dc2626"],
+          rating: 4.8,
+          image:
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kaos polos gaya oversized dengan bahan 100% cotton combed 24s premium yang adem dan sangat nyaman untuk penggunaan harian.",
+          reviews: [
+            {
+              name: "Andi Pratama",
+              rating: 5,
+              comment:
+                "Potongan oversizednya pas banget di badan, bahan cotton combednya adem dan gak bikin gerah.",
+              avatar:
+                "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Siti Rahma",
+              rating: 4,
+              comment:
+                "Warna hitamnya pekat, bahannya tebal tapi tetap nyaman dipakai seharian.",
+              avatar:
+                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Rendi Saputra",
+              rating: 5,
+              comment: "Pengiriman cepat dan kaosnya sangat berkualitas.",
+              avatar:
+                "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 2,
+          name: "Basic Striped Tee Navy",
+          category: "Kaos",
+          price: 125000,
+          stock: 9,
+          sizes: ["S", "M", "L"],
+          colors: ["#1e3a8a", "#0f172a"],
+          rating: 4.5,
+          image:
+            "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kaos motif garis-garis (striped tee) gaya Breton klasik yang memberikan kesan santai namun tetap fashionable.",
+          reviews: [
+            {
+              name: "Budi Santoso",
+              rating: 5,
+              comment:
+                "Motif garis navy-nya rapi, kain kaosnya lembut dan tidak luntur saat dicuci.",
+              avatar:
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Rina Melati",
+              rating: 4,
+              comment:
+                "Model garisnya bikin keliatan lebih langsing, suka banget!",
+              avatar:
+                "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Doni Tata",
+              rating: 4,
+              comment: "Ukuran pas, jahitan rapi.",
+              avatar:
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Dewi Lestari",
+              rating: 5,
+              comment: "Bagus banget bahannya, recomended!",
+              avatar:
+                "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Feri Irawan",
+              rating: 5,
+              comment: "Mantap jiwa seller ramah.",
+              avatar:
+                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 3,
+          name: "Polo Shirt Classic Grey",
+          category: "Kaos",
+          price: 145000,
+          stock: 11,
+          sizes: ["M", "L", "XL"],
+          colors: ["#64748b", "#0f172a", "#15803d"],
+          rating: 4.6,
+          image:
+            "https://images.unsplash.com/photo-1625910513418-7c4712ad75d4?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kaos berkerah (Polo shirt) berbahan lacoste pique premium yang adem, rapi, dan cocok untuk acara semi-formal.",
+          reviews: [
+            {
+              name: "Joko Anwar",
+              rating: 5,
+              comment:
+                "Kerah polo shirt ini kaku dan rapi, cocok dipakai buat kerja santai atau kuliah.",
+              avatar:
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Hendra Wijaya",
+              rating: 4,
+              comment: "Bahannya menyerap keringat dengan baik.",
+              avatar:
+                "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 4,
+          name: "Vintage Graphic Tee White",
+          category: "Kaos",
+          price: 130000,
+          stock: 14,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#ffffff", "#1e293b"],
+          rating: 4.9,
+          image:
+            "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kaos dengan sablon cetak estetika vintage retro memberikan kesan streetwear yang keren.",
+          reviews: [
+            {
+              name: "Dika Mahendra",
+              rating: 5,
+              comment:
+                "Sablon grafisnya kuat dan tidak pecah meskipun sudah dicuci berkali-kali.",
+              avatar:
+                "https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 5,
+          name: "Heavyweight Boxy Tee Olive",
+          category: "Kaos",
+          price: 155000,
+          stock: 10,
+          sizes: ["M", "L", "XL"],
+          colors: ["#3f6212", "#1e293b"],
+          rating: 4.7,
+          image:
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kaos boxy fit dengan gramasi tebal (heavyweight) 280gsm khas brand streetwear modern.",
+          reviews: [
+            {
+              name: "Fajar Nugraha",
+              rating: 5,
+              comment:
+                "Bahan heavyweight beneran tebal berkualitas tinggi dan jatuhnya bagus di badan.",
+              avatar:
+                "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Galih Kusuma",
+              rating: 4,
+              comment: "Model boxy fit nya pas buat gaya kekinian.",
+              avatar:
+                "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Bayu Saputra",
+              rating: 5,
+              comment: "Kualitas kainnya juara banget.",
+              avatar:
+                "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 6,
+          name: "Minimalist Pocket Tee Maroon",
+          category: "Kaos",
+          price: 120000,
+          stock: 16,
+          sizes: ["S", "M", "L"],
+          colors: ["#7f1d1d", "#0f172a", "#e2e8f0"],
+          rating: 4.4,
+          image:
+            "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kaos polos simpel dilengkapi satu saku kecil di dada kiri dengan aksen warna kontras.",
+          reviews: [
+            {
+              name: "Maya Indah",
+              rating: 4,
+              comment:
+                "Warna maroonnya cantik banget, saku di dadanya rapi jahitannya.",
+              avatar:
+                "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 7,
+          name: "Sleeveless Gym Tank Top",
+          category: "Kaos",
+          price: 95000,
+          stock: 20,
+          sizes: ["M", "L", "XL"],
+          colors: ["#000000", "#94a3b8"],
+          rating: 4.3,
+          image:
+            "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kaos tanpa lengan yang dirancang khusus untuk kenyamanan berolahraga di gym atau aktivitas luar ruangan.",
+          reviews: [
+            {
+              name: "Rian Fitness",
+              rating: 5,
+              comment:
+                "Tanktop terenak buat nge-gym, menyerap keringat dengan sangat baik.",
+              avatar:
+                "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Yoga Pratama",
+              rating: 4,
+              comment: "Pas dipakai latihan angkat beban.",
+              avatar:
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 8,
+          name: "Long Sleeve Thermal Tee Cream",
+          category: "Kaos",
+          price: 160000,
+          stock: 8,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#fef08a", "#78716c"],
+          rating: 4.8,
+          image:
+            "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kaos lengan panjang bahan waffle thermal yang hangat namun tetap breathable.",
+          reviews: [
+            {
+              name: "Putri Lestari",
+              rating: 5,
+              comment:
+                "Tekstur kain wafflenya unik dan hangat pas dipakai malam hari.",
+              avatar:
+                "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 9,
+          name: "Tie-Dye Artistic Street Tee",
+          category: "Kaos",
+          price: 140000,
+          stock: 6,
+          sizes: ["M", "L"],
+          colors: ["#4f46e5", "#ec4899"],
+          rating: 4.6,
+          image:
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kaos dengan teknik pewarnaan tie-dye buatan tangan yang artistik dan unik pada setiap helainya.",
+          reviews: [
+            {
+              name: "Galih Kusuma",
+              rating: 4,
+              comment:
+                "Pola gradasi warna tie-dye nya artistik dan gak pasaran.",
+              avatar:
+                "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Siti Rahma",
+              rating: 5,
+              comment: "Warnanya cerah dan sangat keren.",
+              avatar:
+                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 10,
+          name: "Henley Button Neck Charcoal",
+          category: "Kaos",
+          price: 150000,
+          stock: 13,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#334155", "#cbd5e1"],
+          rating: 4.7,
+          image:
+            "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kaos kerah bulat bergesper kancing dada (Henley) memberikan kesan kasual yang lebih maskulin.",
+          reviews: [
+            {
+              name: "Hendra Wijaya",
+              rating: 5,
+              comment:
+                "Kancing di dada kaos henley ini kokoh dan modelnya maskulin.",
+              avatar:
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+
+        // --- KATEGORI: KEMEJA (10 Produk) ---
+        {
+          id: 11,
+          name: "Flannel Casual Shirt Vintage",
+          category: "Kemeja",
+          price: 185000,
+          stock: 8,
+          sizes: ["M", "L", "XL"],
+          colors: ["#b91c1c", "#1e3a8a", "#047857"],
+          rating: 4.7,
+          image:
+            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kemeja flanel lengan panjang motif kotak-kotak klasik. Cocok dipadukan dengan kaos polos untuk tampilan casual yang stylish.",
+          reviews: [
+            {
+              name: "Andi Pratama",
+              rating: 5,
+              comment:
+                "Kemeja flanel terenak yang pernah saya beli! Kain katun flanelnya tebal dan lembut.",
+              avatar:
+                "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Siska Dewi",
+              rating: 4,
+              comment:
+                "Motif kotaknya klasik dan warnanya sangat tegas sesuai foto.",
+              avatar:
+                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Budi Santoso",
+              rating: 5,
+              comment: "Mantap bahannya adem.",
+              avatar:
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 12,
+          name: "Formal Oxford White Shirt",
+          category: "Kemeja",
+          price: 175000,
+          stock: 15,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#ffffff", "#60a5fa", "#f8fafc"],
+          rating: 4.7,
+          image:
+            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kemeja oxford putih formal lengan panjang untuk kebutuhan kerja kantoran, kuliah, maupun acara formal lainnya.",
+          reviews: [
+            {
+              name: "Rian Hidayat",
+              rating: 5,
+              comment:
+                "Kemeja oxford putihnya sangat rapi untuk dipakai kerja kantoran.",
+              avatar:
+                "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 13,
+          name: "Cuban Collar Resort Shirt Sage",
+          category: "Kemeja",
+          price: 190000,
+          stock: 7,
+          sizes: ["M", "L", "XL"],
+          colors: ["#84cc16", "#0f172a", "#fdf8f6"],
+          rating: 4.8,
+          image:
+            "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kemeja pantai kerah terbuka (Cuban collar) bahan rayon santai yang adem dipakai saat liburan.",
+          reviews: [
+            {
+              name: "Yoga Pratama",
+              rating: 5,
+              comment:
+                "Kerah cuban dan bahan rayonnya adem banget dipake pas liburan di pantai.",
+              avatar:
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Rika Larasati",
+              rating: 5,
+              comment: "Modelnya stylish ala resort.",
+              avatar:
+                "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 14,
+          name: "Denim Workwear Shirt Indigo",
+          category: "Kemeja",
+          price: 220000,
+          stock: 6,
+          sizes: ["M", "L", "XL"],
+          colors: ["#1e3a8a", "#475569"],
+          rating: 4.9,
+          image:
+            "https://images.unsplash.com/photo-1578932750294-f5075e85f44a?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kemeja jeans denim tebal ala workwear dengan saku dada ganda yang kokoh dan maskulin.",
+          reviews: [
+            {
+              name: "Bayu Saputra",
+              rating: 5,
+              comment:
+                "Kemeja denim workwear ini jahitannya double kuat dan maskulin.",
+              avatar:
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 15,
+          name: "Linen Summer Shirt Off-White",
+          category: "Kemeja",
+          price: 205000,
+          stock: 9,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#f8fafc", "#d1d5db"],
+          rating: 4.6,
+          image:
+            "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kemeja bahan linen asli yang berpori besar, ringan, dan sangat nyaman untuk cuaca tropis.",
+          reviews: [
+            {
+              name: "Dewi Lestari",
+              rating: 4,
+              comment: "Kain linennya natural dan sangat sejuk di cuaca panas.",
+              avatar:
+                "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 16,
+          name: "Chambray Casual Blue Shirt",
+          category: "Kemeja",
+          price: 170000,
+          stock: 12,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#3b82f6", "#1e293b"],
+          rating: 4.5,
+          image:
+            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kemeja chambray dengan tekstur mirip denim namun jauh lebih ringan dan lembut di kulit.",
+          reviews: [
+            {
+              name: "Feri Irawan",
+              rating: 5,
+              comment:
+                "Kemeja chambray ini lembut sekali di kulit, tidak kaku.",
+              avatar:
+                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 17,
+          name: "Tactical Outdoor Shirt Khaki",
+          category: "Kemeja",
+          price: 230000,
+          stock: 5,
+          sizes: ["M", "L", "XL", "XXL"],
+          colors: ["#a16207", "#1e293b"],
+          rating: 4.8,
+          image:
+            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kemeja lapangan taktis dengan ventilasi punggung dan banyak saku fungsional untuk kegiatan outdoor.",
+          reviews: [
+            {
+              name: "Rahmat Petualang",
+              rating: 5,
+              comment:
+                "Kemeja taktis lapangan terbaik, ada ventilasi punggungnya jadi tidak gerah.",
+              avatar:
+                "https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 18,
+          name: "Striped Business Formal Shirt",
+          category: "Kemeja",
+          price: 180000,
+          stock: 11,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#2563eb", "#ffffff"],
+          rating: 4.7,
+          image:
+            "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kemeja formal motif garis vertikal tipis memberikan kesan tubuh yang lebih tegap dan profesional.",
+          reviews: [
+            {
+              name: "Wahyudi",
+              rating: 4,
+              comment:
+                "Motif garis vertikal pada kemeja ini membuat badan tampak lebih tegap.",
+              avatar:
+                "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 19,
+          name: "Mandarin Collar Maroon Shirt",
+          category: "Kemeja",
+          price: 175000,
+          stock: 10,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#831843", "#0f172a"],
+          rating: 4.6,
+          image:
+            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kemeja kerah sanghai (Mandarin collar) elegan yang cocok untuk acara formal maupun hari keagamaan.",
+          reviews: [
+            {
+              name: "Taufik Hidayat",
+              rating: 5,
+              comment:
+                "Kerah sanghai (mandarin collar) nya sangat rapi dan elegan.",
+              avatar:
+                "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 20,
+          name: "Short Sleeve Batik Modern Shirt",
+          category: "Kemeja",
+          price: 195000,
+          stock: 14,
+          sizes: ["M", "L", "XL"],
+          colors: ["#b45309", "#1e3a8a"],
+          rating: 4.9,
+          image:
+            "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kemeja batik lengan pendek motif kontemporer modern dengan bahan katun prima halus.",
+          reviews: [
+            {
+              name: "Agus Santoso",
+              rating: 5,
+              comment:
+                "Kemeja batik modern dengan bahan katun halus yang sangat nyaman.",
+              avatar:
+                "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Joko Anwar",
+              rating: 5,
+              comment: "Motif batiknya keren abis.",
+              avatar:
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+
+        // --- KATEGORI: JAKET & OUTER (10 Produk) ---
+        {
+          id: 21,
+          name: "Bomber Jacket Military Green",
+          category: "Jaket",
+          price: 295000,
+          stock: 5,
+          sizes: ["M", "L", "XL"],
+          colors: ["#365314", "#1e293b", "#78716c"],
+          rating: 4.9,
+          image:
+            "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Jaket bomber tebal anti angin dengan furing dakron lembut di bagian dalam. Dilengkapi saku fungsional beritsleting.",
+          reviews: [
+            {
+              name: "Reza Rahadian",
+              rating: 5,
+              comment:
+                "Jaket bomber militer ini tebal banget dan sangat ampuh menahan angin malam.",
+              avatar:
+                "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Diana",
+              rating: 5,
+              comment: "Furing dakron di dalam jaketnya empuk dan hangat.",
+              avatar:
+                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 22,
+          name: "Graphic Streetwear Hoodie White",
+          category: "Jaket",
+          price: 250000,
+          stock: 7,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#ffffff", "#1e293b", "#f43f5e"],
+          rating: 4.9,
+          image:
+            "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Hoodie bertuliskan grafis sablon plastisol awet berkualitas tinggi. Terbuat dari bahan fleece tebal yang hangat.",
+          reviews: [
+            {
+              name: "Kevin Sanjaya",
+              rating: 5,
+              comment:
+                "Hoodie fleece tebal premium, kupluknya pas di kepala dan sablonnya keren.",
+              avatar:
+                "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 23,
+          name: "Coach Jacket Urban Windbreaker",
+          category: "Jaket",
+          price: 280000,
+          stock: 4,
+          sizes: ["M", "L", "XL"],
+          colors: ["#1e293b", "#991b1b"],
+          rating: 4.9,
+          image:
+            "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Jaket coach kasual dengan kancing snap button dan serut pinggang elastis. Tahan percikan air ringan dan pas untuk pengendara motor.",
+          reviews: [
+            {
+              name: "Surya Saputra",
+              rating: 5,
+              comment:
+                "Coach jacket windbreaker terbaik buat berkendara motor, anti air ringan.",
+              avatar:
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 24,
+          name: "Denim Trucker Jacket Washed",
+          category: "Jaket",
+          price: 310000,
+          stock: 6,
+          sizes: ["M", "L", "XL"],
+          colors: ["#3b82f6", "#1e293b"],
+          rating: 4.8,
+          image:
+            "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Jaket jeans trucker dengan efek washing belel estetik ala gaya 90-an.",
+          reviews: [
+            {
+              name: "Iqbaal Ramadhan",
+              rating: 5,
+              comment:
+                "Jaket trucker denim dengan washing belel yang sangat estetik.",
+              avatar:
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 25,
+          name: "Parka Mountain Hooded Jacket",
+          category: "Jaket",
+          price: 340000,
+          stock: 3,
+          sizes: ["L", "XL"],
+          colors: ["#14532d", "#78716c"],
+          rating: 4.9,
+          image:
+            "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Jaket parka panjang dengan tudung berbulu dan kantong besar multifungsi tahan angin gunung.",
+          reviews: [
+            {
+              name: "Rizal Pendaki",
+              rating: 5,
+              comment:
+                "Jaket parka gunung yang sangat kokoh dan tahan terpaan angin dingin.",
+              avatar:
+                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 26,
+          name: "Varsity Letterman Jacket Black",
+          category: "Jaket",
+          price: 320000,
+          stock: 5,
+          sizes: ["M", "L", "XL"],
+          colors: ["#000000", "#dc2626"],
+          rating: 4.8,
+          image:
+            "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Jaket varsity kampus bordir patch gaya Amerika dengan kombinasi lengan kulit sintetis premium.",
+          reviews: [
+            {
+              name: "Dimas Anggara",
+              rating: 5,
+              comment:
+                "Jaket varsity kampus dengan bordir patch berkualitas tinggi dan keren.",
+              avatar:
+                "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 27,
+          name: "Zip-Up Fleece Sweater Grey",
+          category: "Jaket",
+          price: 240000,
+          stock: 9,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#94a3b8", "#1e293b"],
+          rating: 4.6,
+          image:
+            "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Sweater beritsleting depan bahan katun fleece lembut untuk kenyamanan santai sehari-hari.",
+          reviews: [
+            {
+              name: "Nabila Syakieb",
+              rating: 4,
+              comment:
+                "Sweater zip-up fleece yang sangat lembut dan nyaman dipakai bersantai.",
+              avatar:
+                "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 28,
+          name: "Anorak Half-Zip Windbreaker",
+          category: "Jaket",
+          price: 270000,
+          stock: 7,
+          sizes: ["M", "L", "XL"],
+          colors: ["#0284c7", "#334155"],
+          rating: 4.7,
+          image:
+            "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Jaket anorak setengah ritsleting dengan saku kangguru besar di bagian dada depan.",
+          reviews: [
+            {
+              name: "Fauzan Al Ghifari",
+              rating: 5,
+              comment:
+                "Jaket anorak half-zip dengan saku kangguru yang sangat fungsional.",
+              avatar:
+                "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 29,
+          name: "Flannel Hooded Overshirt",
+          category: "Jaket",
+          price: 260000,
+          stock: 8,
+          sizes: ["M", "L", "XL"],
+          colors: ["#7f1d1d", "#1e3a8a"],
+          rating: 4.8,
+          image:
+            "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Kemeja flanel tebal yang dilengkapi tudung kepala (hoodie) fleece lepasan yang unik.",
+          reviews: [
+            {
+              name: "Gilang Dirga",
+              rating: 5,
+              comment:
+                "Inovasi kemeja flanel berhoodie yang tebal dan stylish banget.",
+              avatar:
+                "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 30,
+          name: "PU Leather Biker Jacket",
+          category: "Jaket",
+          price: 380000,
+          stock: 3,
+          sizes: ["M", "L", "XL"],
+          colors: ["#000000"],
+          rating: 5.0,
+          image:
+            "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Jaket kulit sintetis premium gaya rocker biker dengan ritsleting asimetris yang gagah.",
+          reviews: [
+            {
+              name: "Nazril Irham",
+              rating: 5,
+              comment:
+                "Jaket kulit biker premium yang gagah dan membuat penampilan sangat keren.",
+              avatar:
+                "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+
+        // --- KATEGORI: CELANA (10 Produk) ---
+        {
+          id: 31,
+          name: "Slim Fit Chino Pants Beige",
+          category: "Celana",
+          price: 210000,
+          stock: 10,
+          sizes: ["28", "30", "32", "34"],
+          colors: ["#d97706", "#475569", "#111827"],
+          rating: 4.6,
+          image:
+            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Celana panjang chino model slim fit dengan bahan katun twill stretch elastis yang fleksibel dan nyaman dipakai beraktivitas.",
+          reviews: [
+            {
+              name: "Bambang Pamungkas",
+              rating: 5,
+              comment:
+                "Celana chino slim fit ini bahannya stretch, sangat elastis dan nyaman dipakai seharian.",
+              avatar:
+                "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100",
+            },
+            {
+              name: "Ratna",
+              rating: 4,
+              comment:
+                "Potongan celananya rapi dan warna beige-nya sangat elegan.",
+              avatar:
+                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 32,
+          name: "Denim Jeans Indigo Blue",
+          category: "Celana",
+          price: 270000,
+          stock: 6,
+          sizes: ["29", "31", "33", "34"],
+          colors: ["#1d4ed8", "#334155"],
+          rating: 4.8,
+          image:
+            "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Celana jeans denim klasik dengan warna indigo pekat dan potongan regular straight yang tahan lama.",
+          reviews: [
+            {
+              name: "Eko Patrio",
+              rating: 5,
+              comment:
+                "Celana jeans denim indigo dengan bahan tebal dan jahitan selangkangan sangat kuat.",
+              avatar:
+                "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 33,
+          name: "Cargo Pants Tactical Grey",
+          category: "Celana",
+          price: 250000,
+          stock: 8,
+          sizes: ["28", "30", "32", "34", "36"],
+          colors: ["#475569", "#3f6212"],
+          rating: 4.8,
+          image:
+            "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Celana cargo panjang dengan 6 saku fungsional luas, cocok untuk petualangan atau gaya streetwear santai.",
+          reviews: [
+            {
+              name: "Tegar Pratama",
+              rating: 5,
+              comment:
+                "Celana cargo taktis dengan banyak saku besar yang sangat fungsional dan kokoh.",
+              avatar:
+                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 34,
+          name: "Formal Office Slacks Black",
+          category: "Celana",
+          price: 230000,
+          stock: 12,
+          sizes: ["30", "32", "34", "36"],
+          colors: ["#000000", "#1e293b"],
+          rating: 4.7,
+          image:
+            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Celana bahan formal (slacks) potongan straight cut rapi khusus untuk kerja kantor atau acara resmi.",
+          reviews: [
+            {
+              name: "Doni Tata",
+              rating: 4,
+              comment:
+                "Celana bahan formal kantor (slacks) yang potongannya lurus dan rapi.",
+              avatar:
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 35,
+          name: "Jogger Pants Fleece Dark Grey",
+          category: "Celana",
+          price: 190000,
+          stock: 15,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#334155", "#000000"],
+          rating: 4.6,
+          image:
+            "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Celana jogger fleece tebal dengan karet pergelangan kaki elastis yang nyaman untuk bersantai di rumah.",
+          reviews: [
+            {
+              name: "Siti Nurhaliza",
+              rating: 5,
+              comment:
+                "Celana jogger fleece yang empuk, sangat nyaman untuk dipakai rebahan di rumah.",
+              avatar:
+                "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 36,
+          name: "Ripped Jeans Light Blue",
+          category: "Celana",
+          price: 290000,
+          stock: 5,
+          sizes: ["29", "31", "33"],
+          colors: ["#60a5fa"],
+          rating: 4.5,
+          image:
+            "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Celana jeans belel sobek lutut (ripped jeans) warna terang untuk gaya edgy rock n roll.",
+          reviews: [
+            {
+              name: "Rian D'Masiv",
+              rating: 4,
+              comment:
+                "Model ripped jeans dengan sobekan lutut yang pas dan keren buat manggung.",
+              avatar:
+                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 37,
+          name: "Corduroy Vintage Trousers Brown",
+          category: "Celana",
+          price: 260000,
+          stock: 7,
+          sizes: ["28", "30", "32", "34"],
+          colors: ["#78350f", "#334155"],
+          rating: 4.8,
+          image:
+            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Celana panjang bahan corduroy bertekstur garis timbul klasik gaya retro vintage.",
+          reviews: [
+            {
+              name: "Ardi Bakrie",
+              rating: 5,
+              comment:
+                "Celana corduroy bertekstur garis timbul vintage yang tebal dan berkelas.",
+              avatar:
+                "https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 38,
+          name: "Drawstring Linen Pants Cream",
+          category: "Celana",
+          price: 215000,
+          stock: 10,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["#fef08a", "#e2e8f0"],
+          rating: 4.7,
+          image:
+            "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Celana santai bahan linen dengan tali serut pinggang elastis untuk liburan musim panas.",
+          reviews: [
+            {
+              name: "Rika Larasati",
+              rating: 5,
+              comment:
+                "Celana linen bertali serut yang ringan dan adem banget buat liburan.",
+              avatar:
+                "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 39,
+          name: "Trackpants Sporty Stripe Navy",
+          category: "Celana",
+          price: 180000,
+          stock: 11,
+          sizes: ["M", "L", "XL"],
+          colors: ["#1e3a8a", "#000000"],
+          rating: 4.6,
+          image:
+            "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Celana training olah raga dengan garis putih di sisi samping celana gaya sporty retro.",
+          reviews: [
+            {
+              name: "Jefri Nichol",
+              rating: 4,
+              comment:
+                "Celana trackpants sporty dengan garis samping yang nyaman buat lari.",
+              avatar:
+                "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+        {
+          id: 40,
+          name: "Wide-Leg baggy Streetwear Denim",
+          category: "Celana",
+          price: 285000,
+          stock: 8,
+          sizes: ["30", "32", "34"],
+          colors: ["#1e293b", "#3b82f6"],
+          rating: 4.9,
+          image:
+            "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&q=80&w=600",
+          description:
+            "Celana jeans potongan longgar lebar (baggy wide-leg) gaya hip-hop streetwear masa kini.",
+          reviews: [
+            {
+              name: "Ramadhan",
+              rating: 5,
+              comment:
+                "Celana baggy jeans wide-leg berpotongan longgar yang sangat keren untuk gaya streetwear.",
+              avatar:
+                "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=100",
+            },
+          ],
+        },
+      ];
+
+      // State Aplikasi
+      let cart = JSON.parse(localStorage.getItem("vogue_cart")) || [];
+      let currentSelectedProduct = null;
+      let selectedSize = null;
+      let selectedColor = null;
+      let activeCategory = "all";
+      let searchQuery = "";
+
+      // Format Rupiah
+      function formatRupiah(number) {
+        return new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+          maximumFractionDigits: 0,
+        }).format(number);
+      }
+
+      // Render Katalog Produk (Jumlah Ulasan Sinkron Otomatis Sesuai Panjang Array Reviews)
+      function renderProducts() {
+        const grid = document.getElementById("productGrid");
+        const emptyState = document.getElementById("emptyState");
+        grid.innerHTML = "";
+
+        const filtered = products.filter((p) => {
+          const matchCategory =
+            activeCategory === "all" || p.category === activeCategory;
+          const matchSearch = p.name
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase());
+          return matchCategory && matchSearch;
+        });
+
+        if (filtered.length === 0) {
+          emptyState.classList.remove("hidden");
+          return;
+        } else {
+          emptyState.classList.add("hidden");
+        }
+
+        filtered.forEach((product) => {
+          const colorDots = product.colors
+            .map(
+              (color) =>
+                `<span class="w-3 h-3 rounded-full border border-slate-300 inline-block shadow-sm" style="background-color: ${color};"></span>`,
+            )
+            .join("");
+
+          const actualReviewsCount = product.reviews.length;
+
+          const card = document.createElement("div");
+          card.className =
+            "bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group";
+          card.innerHTML = `
+                    <div class="relative aspect-square overflow-hidden bg-slate-100 cursor-pointer product-click" data-id="${product.id}">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-sm">${product.category}</span>
+                        <span class="absolute bottom-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2 py-0.5 rounded-md">Stok: ${product.stock}</span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1 justify-between">
+                        <div>
+                            <!-- Rating & Ulasan Akurat Sesuai Jumlah Data -->
+                            <div class="flex items-center gap-1.5 mb-1.5 text-xs">
+                                <div class="text-amber-400 flex items-center gap-0.5">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span class="font-bold text-slate-700 ml-0.5">${product.rating}</span>
+                                </div>
+                                <span class="text-slate-300">&bull;</span>
+                                <span class="text-slate-400">(${actualReviewsCount} ulasan)</span>
+                            </div>
+
+                            <h3 class="font-bold text-slate-900 text-base line-clamp-1 cursor-pointer hover:text-brand-600 transition-colors product-click" data-id="${product.id}">${product.name}</h3>
+                            
+                            <!-- Pilihan Warna -->
+                            <div class="flex items-center gap-1.5 mt-2">
+                                <span class="text-[11px] text-slate-400 font-medium">Warna:</span>
+                                <div class="flex items-center gap-1">
+                                    ${colorDots}
+                                </div>
+                            </div>
+
+                            <p class="text-brand-600 font-extrabold text-lg mt-2">${formatRupiah(product.price)}</p>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs text-slate-400 font-medium">${product.sizes.length} Ukuran</span>
+                            <button onclick="openProductModal(${product.id})" class="px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-brand-600 transition-all shadow-sm">
+                                Pilih Varian
+                            </button>
+                        </div>
+                    </div>
+                `;
+          grid.appendChild(card);
+        });
+
+        document.querySelectorAll(".product-click").forEach((el) => {
+          el.addEventListener("click", () => {
+            openProductModal(parseInt(el.getAttribute("data-id")));
+          });
+        });
+      }
+
+      // Buka Modal Detail Produk & Render Ulasan Sinkron Sepenuhnya
+      function openProductModal(productId) {
+        currentSelectedProduct = products.find((p) => p.id === productId);
+        selectedSize = null;
+        selectedColor = null;
+
+        document.getElementById("modalImg").src = currentSelectedProduct.image;
+        document.getElementById("modalTitle").textContent =
+          currentSelectedProduct.name;
+        document.getElementById("modalPrice").textContent = formatRupiah(
+          currentSelectedProduct.price,
+        );
+        document.getElementById("modalDesc").textContent =
+          currentSelectedProduct.description;
+        document.getElementById("modalCategoryBadge").textContent =
+          currentSelectedProduct.category;
+        document.getElementById("selectionError").classList.add("hidden");
+        document.getElementById("modalReviewsCount").textContent =
+          currentSelectedProduct.reviews.length;
+
+        // Render Ukuran
+        const sizeContainer = document.getElementById("sizeOptions");
+        sizeContainer.innerHTML = "";
+        currentSelectedProduct.sizes.forEach((size) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className =
+            "size-option px-4 py-2 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 hover:border-brand-500 hover:text-brand-600 transition-all";
+          btn.textContent = size;
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".size-option")
+              .forEach((b) =>
+                b.classList.remove(
+                  "bg-brand-500",
+                  "text-white",
+                  "border-brand-500",
+                ),
+              );
+            btn.classList.add("bg-brand-500", "text-white", "border-brand-500");
+            selectedSize = size;
+            document.getElementById("selectionError").classList.add("hidden");
+          });
+          sizeContainer.appendChild(btn);
+        });
+
+        // Render Warna
+        const colorContainer = document.getElementById("colorOptions");
+        colorContainer.innerHTML = "";
+        currentSelectedProduct.colors.forEach((color) => {
+          const colorBtn = document.createElement("button");
+          colorBtn.type = "button";
+          colorBtn.className =
+            "color-option w-8 h-8 rounded-full border-2 border-slate-300 shadow-sm transition-transform hover:scale-110 relative flex items-center justify-center";
+          colorBtn.style.backgroundColor = color;
+          colorBtn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".color-option")
+              .forEach((b) =>
+                b.classList.remove(
+                  "ring-4",
+                  "ring-brand-500/30",
+                  "border-brand-600",
+                ),
+              );
+            colorBtn.classList.add(
+              "ring-4",
+              "ring-brand-500/30",
+              "border-brand-600",
+            );
+            selectedColor = color;
+            document.getElementById("selectionError").classList.add("hidden");
+          });
+          colorContainer.appendChild(colorBtn);
+        });
+
+        // Render Daftar Ulasan yang Sesuai dan Sinkron Jumlahnya
+        const reviewsContainer = document.getElementById("modalReviewsList");
+        reviewsContainer.innerHTML = "";
+        if (
+          currentSelectedProduct.reviews &&
+          currentSelectedProduct.reviews.length > 0
+        ) {
+          currentSelectedProduct.reviews.forEach((rev) => {
+            let starsHtml = "";
+            for (let i = 1; i <= 5; i++) {
+              if (i <= rev.rating) {
+                starsHtml +=
+                  '<i class="fa-solid fa-star text-amber-400 text-xs"></i>';
+              } else {
+                starsHtml +=
+                  '<i class="fa-regular fa-star text-slate-300 text-xs"></i>';
+              }
+            }
+
+            const reviewItem = document.createElement("div");
+            reviewItem.className =
+              "p-3.5 rounded-xl bg-slate-50 border border-slate-200/60 flex items-start gap-3";
+            reviewItem.innerHTML = `
+                        <img src="${rev.avatar}" alt="${rev.name}" class="w-10 h-10 rounded-full object-cover border border-slate-200 shadow-sm flex-shrink-0">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h5 class="font-bold text-slate-800 text-xs">${rev.name}</h5>
+                                <div class="flex items-center gap-0.5">${starsHtml}</div>
+                            </div>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">${rev.comment}</p>
+                        </div>
+                    `;
+            reviewsContainer.appendChild(reviewItem);
+          });
+        } else {
+          reviewsContainer.innerHTML =
+            '<p class="text-xs text-slate-400 italic">Belum ada ulasan untuk produk ini.</p>';
+        }
+
+        document.getElementById("productModal").classList.remove("hidden");
+        document.getElementById("productModal").classList.add("flex");
+      }
+
+      // Tutup Modal Detail
+      document.getElementById("closeModalBtn").addEventListener("click", () => {
+        document.getElementById("productModal").classList.add("hidden");
+        document.getElementById("productModal").classList.remove("flex");
+      });
+
+      // Tambah ke Keranjang dari Modal dengan Validasi
+      document
+        .getElementById("modalAddToCartBtn")
+        .addEventListener("click", () => {
+          if (!selectedSize || !selectedColor) {
+            document
+              .getElementById("selectionError")
+              .classList.remove("hidden");
+            return;
+          }
+
+          const cartItemId = `${currentSelectedProduct.id}-${selectedSize}-${selectedColor}`;
+          const existingIndex = cart.findIndex(
+            (item) => item.cartItemId === cartItemId,
+          );
+
+          if (existingIndex > -1) {
+            if (cart[existingIndex].qty < currentSelectedProduct.stock) {
+              cart[existingIndex].qty += 1;
+            } else {
+              alert("Stok maksimum produk ini telah tercapai.");
+            }
+          } else {
+            cart.push({
+              cartItemId: cartItemId,
+              id: currentSelectedProduct.id,
+              name: currentSelectedProduct.name,
+              price: currentSelectedProduct.price,
+              image: currentSelectedProduct.image,
+              size: selectedSize,
+              color: selectedColor,
+              qty: 1,
+            });
+          }
+
+          saveCartAndRefresh();
+          document.getElementById("productModal").classList.add("hidden");
+          document.getElementById("productModal").classList.remove("flex");
+          openCartDrawer();
+        });
+
+      function saveCartAndRefresh() {
+        localStorage.setItem("vogue_cart", JSON.stringify(cart));
+        updateCartUI();
+      }
+
+      function updateCartUI() {
+        const badge = document.getElementById("cartBadge");
+        const countHeader = document.getElementById("cartItemCountHeader");
+        const list = document.getElementById("cartItemsList");
+        const subtotalEl = document.getElementById("cartSubtotal");
+        const totalEl = document.getElementById("cartTotal");
+
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        badge.textContent = totalItems;
+        countHeader.textContent = `${totalItems} barang`;
+
+        if (cart.length === 0) {
+          list.innerHTML = `
+                    <div class="text-center py-12">
+                        <div class="w-14 h-14 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto text-xl mb-3">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </div>
+                        <p class="text-slate-600 font-semibold text-sm">Keranjang Anda masih kosong</p>
+                        <p class="text-slate-400 text-xs mt-1">Ayo mulai pilih pakaian favoritmu!</p>
+                    </div>
+                `;
+          subtotalEl.textContent = formatRupiah(0);
+          totalEl.textContent = formatRupiah(0);
+          return;
+        }
+
+        list.innerHTML = "";
+        let subtotal = 0;
+
+        cart.forEach((item, index) => {
+          subtotal += item.price * item.qty;
+          const itemDiv = document.createElement("div");
+          itemDiv.className = "flex gap-4 pt-4 first:pt-0";
+          itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-xl bg-slate-100 border border-slate-200">
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold text-slate-900 text-sm line-clamp-1">${item.name}</h4>
+                                <button onclick="removeCartItem(${index})" class="text-slate-400 hover:text-brand-600 transition-colors">
+                                    <i class="fa-solid fa-trash-can text-xs"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center gap-2 mt-0.5 text-xs text-slate-500">
+                                <span>Ukuran: <strong class="text-slate-700">${item.size}</strong></span>
+                                <span>&bull;</span>
+                                <span class="flex items-center gap-1">Warna: <span class="w-3 h-3 rounded-full border border-slate-300 inline-block" style="background-color: ${item.color};"></span></span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="font-bold text-brand-600 text-sm">${formatRupiah(item.price)}</span>
+                            <div class="flex items-center gap-2 border border-slate-200 rounded-lg px-2 py-1 bg-slate-50">
+                                <button onclick="updateQty(${index}, -1)" class="text-slate-500 hover:text-slate-900 font-bold px-1"><i class="fa-solid fa-minus text-[10px]"></i></button>
+                                <span class="text-xs font-bold text-slate-800 w-4 text-center">${item.qty}</span>
+                                <button onclick="updateQty(${index}, 1)" class="text-slate-500 hover:text-slate-900 font-bold px-1"><i class="fa-solid fa-plus text-[10px]"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+          list.appendChild(itemDiv);
+        });
+
+        subtotalEl.textContent = formatRupiah(subtotal);
+        totalEl.textContent = formatRupiah(subtotal);
+      }
+
+      window.updateQty = function (index, delta) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) {
+          cart.splice(index, 1);
+        }
+        saveCartAndRefresh();
+      };
+
+      window.removeCartItem = function (index) {
+        cart.splice(index, 1);
+        saveCartAndRefresh();
+      };
+
+      const cartDrawer = document.getElementById("cartDrawer");
+      function openCartDrawer() {
+        cartDrawer.classList.remove("hidden");
+      }
+      function closeCartDrawer() {
+        cartDrawer.classList.add("hidden");
+      }
+
+      document
+        .getElementById("cartBtn")
+        .addEventListener("click", openCartDrawer);
+      document
+        .getElementById("closeCartBtn")
+        .addEventListener("click", closeCartDrawer);
+      document
+        .getElementById("cartOverlay")
+        .addEventListener("click", closeCartDrawer);
+
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          document.querySelectorAll(".filter-btn").forEach((b) => {
+            b.classList.remove("bg-slate-900", "text-white");
+            b.classList.add(
+              "bg-white",
+              "border",
+              "border-slate-200",
+              "text-slate-700",
+            );
+          });
+          e.target.classList.remove(
+            "bg-white",
+            "border",
+            "border-slate-200",
+            "text-slate-700",
+          );
+          e.target.classList.add("bg-slate-900", "text-white");
+
+          activeCategory = e.target.getAttribute("data-category");
+          renderProducts();
+        });
+      });
+
+      const searchInput = document.getElementById("searchInput");
+      const mobileSearchInput = document.getElementById("mobileSearchInput");
+
+      function handleSearch(e) {
+        searchQuery = e.target.value;
+        renderProducts();
+      }
+      searchInput.addEventListener("input", handleSearch);
+      mobileSearchInput.addEventListener("input", handleSearch);
+
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      const checkoutModal = document.getElementById("checkoutModal");
+      const checkoutBtn = document.getElementById("checkoutBtn");
+
+      checkoutBtn.addEventListener("click", () => {
+        if (cart.length === 0) {
+          alert("Keranjang belanja Anda masih kosong.");
+          return;
+        }
+        closeCartDrawer();
+        checkoutModal.classList.remove("hidden");
+        checkoutModal.classList.add("flex");
+      });
+
+      document
+        .getElementById("closeCheckoutModal")
+        .addEventListener("click", () => {
+          checkoutModal.classList.add("hidden");
+          checkoutModal.classList.remove("flex");
+        });
+
+      const checkoutForm = document.getElementById("checkoutForm");
+      const checkoutError = document.getElementById("checkoutError");
+      const successModal = document.getElementById("successModal");
+
+      checkoutForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("checkoutName").value.trim();
+        const phone = document.getElementById("checkoutPhone").value.trim();
+        const address = document.getElementById("checkoutAddress").value.trim();
+
+        if (!name || !phone || !address) {
+          checkoutError.classList.remove("hidden");
+          return;
+        }
+        checkoutError.classList.add("hidden");
+
+        const totalAmount = cart.reduce(
+          (sum, item) => sum + item.price * item.qty,
+          0,
+        );
+        const randomOrderId =
+          "#VOG-" + Math.floor(100000 + Math.random() * 900000);
+
+        document.getElementById("successOrderId").textContent = randomOrderId;
+        document.getElementById("successName").textContent = name;
+        document.getElementById("successTotal").textContent =
+          formatRupiah(totalAmount);
+
+        cart = [];
+        saveCartAndRefresh();
+
+        checkoutModal.classList.add("hidden");
+        checkoutModal.classList.remove("flex");
+        successModal.classList.remove("hidden");
+        successModal.classList.add("flex");
+      });
+
+      document
+        .getElementById("closeSuccessBtn")
+        .addEventListener("click", () => {
+          successModal.classList.add("hidden");
+          successModal.classList.remove("flex");
+          checkoutForm.reset();
+        });
+
+      // Inisialisasi Pertama
+      renderProducts();
+      updateCartUI();
+    </script>
+  </body>
+</html>
